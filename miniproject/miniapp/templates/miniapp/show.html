@@ -1,0 +1,10 @@
+{% load static %}
+
+{% if object %}
+    {% for item in object %}
+        <img src="{{ item.img.url }}" alt="">
+    {% endfor %}
+
+{% else %}
+{% endif %}
+
