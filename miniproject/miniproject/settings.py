@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'miniproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'miniproject1',
-        'USER': 'root',
-        'PASSWORD': 'aivle',
-        'HOST': '127.0.0.1',
+        'NAME': 'YMMM',
+        'USER': 'YMMM',
+        'PASSWORD': '0403',
+        'HOST': '15.164.153.191',
         'PORT': 3306
     }
 }
