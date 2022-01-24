@@ -12,9 +12,18 @@ def login(request):
     if request.method == 'POST':
         user_id = request.POST.get('user_id')
         user_pw = request.POST.get('user_pw')
-        m = User.objects.get(user_id=user_id, user_pw=user_pw)
-        print(m)
-        return render(request, 'miniapp/login_complete.html' )
+        try: 
+            m=User.objects.get(user_id=user_id, user_pw=user_pw)
+            context = {
+                'object': m
+            }
+            request.session['id']=user_id
+            return render(request, 'miniapp/login_complete.html', context )
+        except:
+            message = {
+                'message': "로그인 실패!"
+            }
+            return render(request, 'miniapp/login.html', message)
     else:
         return render(request, 'miniapp/login.html' )
 
@@ -40,23 +49,33 @@ def upload_cat_img(request):
     if request.method == 'POST':
         img = request.FILES.get('img-file')
         time = timezone.now()
-       # CatPhoto.objects.create(cat_photo=img,date_time=time,user_no=1,cat_id=1)
+        user = User.objects.get(user_no=2)
+        cat = Cat.objects.get(cat_id=42)
+        CatPhoto.objects.create(cat_photo=img,date_time=time,user_no_id=1,cat_id=42)
         return redirect(upload_cat_img)
     return render(request, 'miniapp/upload_cat_img.html')
 
 
 def show(request):
+
+    name = request.session['id']
+
+    u=User.objects.get(user_id=name)
+    #img = CatPhoto.objects.filter(user_no=int(u.user_no))
     img = CatPhoto.objects.all()
     context = {
-        'object': img
+        'object': img,
+        'user': int(u.user_no),
+        'name': name
     }
+    
     return render(request, 'miniapp/show.html', context)
 
 def create_cat(request):
     if request.method == 'POST':
         cat_name = request.POST.get('cat_name')
         appearance = request.POST.get("appearance")
-        print(cat_name,appearance)
+        
     #     cat_name = request.POST.get('cat_name')
     #     gender = request.POST.get('gender')
     #     neutral = request.POST.get('neutral')
@@ -77,5 +96,7 @@ def my_cat(request):
     return render(request, 'miniapp/my_cat.html',  {'user':user,'cat':cat})
 
 def login_complete(request):
+    # if request.method == 'POST':
+    #     return render(request, 'miniapp/show.html' )
     return render(request, 'miniapp/login_complete.html' )
 

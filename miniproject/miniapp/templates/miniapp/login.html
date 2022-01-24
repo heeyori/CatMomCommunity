@@ -5,6 +5,9 @@
         <div class="form-group" action="." >
             {% csrf_token %}
 
+            {% if message %}
+                <h3>{{ message }} </h3>   
+            {% endif %} 
             <label for="username">사용자ID</label>
             <input type="text" class="form-control" name="user_id">
         </div>
@@ -17,3 +20,4 @@
     </form>
 
 </div>
+

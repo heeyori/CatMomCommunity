@@ -20,10 +20,17 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <body>
  
     <div class="layer">
-        <br><br><br>
-        <span class="content">로그인이 완료되었습니다.</span><br><br>
-        <button type="submit" class="btn btn-primary">나의 고양이 목록으로 이동하기</button>
- 
+        <form method="post" class="post-form">
+            {% csrf_token %}
+            <br><br><br>
+            <span class="content">로그인이 완료되었습니다.</span><br>
+            {% if object  %}
+                <p>{{ object.user_name }} 님 반갑습니다.</p>
+
+            {% endif %}
+            <br>
+            <button type="submit" class="btn btn-primary">나의 고양이 목록으로 이동하기</button>
+        </form>
 
     </div>
  
