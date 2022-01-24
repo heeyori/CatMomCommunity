@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from miniapp import views as miniapp_views
+from rest_framework import routers
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,6 +24,8 @@ urlpatterns = [
     path('signup/', miniapp_views.signup),
     path('create_cat/', miniapp_views.create_cat),
     path('signup_complete/', miniapp_views.signup_complete),
+    path('login_complete/', miniapp_views.login_complete),
     path('upload_cat_img/',miniapp_views.upload_cat_img),
     path('show/', miniapp_views.show),
+    path('my_cat/', miniapp_views.my_cat),
 ]

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'miniapp',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,13 +80,21 @@ WSGI_APPLICATION = 'miniproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'miniproject1',
-        'USER': 'root',
-        'PASSWORD': 'aivle',
-        'HOST': '127.0.0.1',
+        'NAME': 'YMMM',
+        'USER': 'YMMM',
+        'PASSWORD': '0403',
+        'HOST': '13.125.52.234',
         'PORT': 3306
     }
-}
+        # 'default': {
+        #     'ENGINE': 'django.db.backends.mysql',
+        #     'NAME': 'tmp',
+        #     'USER': 'root',
+        #     'PASSWORD': 'aivle',
+        #     'HOST': '127.0.0.1',
+        #     'PORT': 3306,
+        # }
+    }
 
 
 # Password validation
@@ -132,7 +141,7 @@ AWS_SECRET_ACCESS_KEY = 'RVhEi5ouwY/VGGzhxEOjPCfYRG1clLY5T/ktmtSo' # .csv 파일
 AWS_REGION = 'ap-northeast-2'
 
 ###S3 Storages
-AWS_STORAGE_BUCKET_NAME = 'kt-aivle-4-3' # 설정한 버킷 이름
+AWS_STORAGE_BUCKET_NAME = 'aivle-s43' # 설정한 버킷 이름
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME,AWS_REGION)
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
