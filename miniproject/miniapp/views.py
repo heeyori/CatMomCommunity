@@ -1,5 +1,4 @@
 from turtle import st
-from aiohttp import request
 from django.shortcuts import redirect,render
 from django.http import HttpResponse,JsonResponse
 from .models import User,Img,Cat
